@@ -470,10 +470,8 @@ button.lihat-quran-btn:hover::after {
     <div class="login-header">
     <img src="https://raw.githubusercontent.com/muqoddammtb/web/main/muqoddam.jpg" alt="Logo Mutaba'ah Tahfizh" />
 	<br>
-   <h1 class="judul">
-  <span class="judul-atas">Mutaba'ah Tahfizh</span>
-  <span class="judul-bawah">Ponpes AL MUQODDAM</span>
-</h1>
+   <h1 class="judul">Mutaba'ah Tahfizh
+M. Taqi Lazuardi</h1>
     </div>
 
     <!-- Form Login -->
@@ -1259,7 +1257,7 @@ async function buatUserNIS() {
   
     <!-- Dashboard -->
     <div id="dashboard-card" class="card" style="display: none;">
-      <h1>Mutaba'ah Hafalan Santri</h1>
+      <h1>Mutaba'ah Hafalan Al-Qur'an</h1>
       <h2>Ahlan, <span id="namaUser"></span>!</h2>
 
      
@@ -1614,12 +1612,7 @@ function extendSemesterOptions(selectEl, max = SEMESTER_MAX) {
     <label>Jenjang:</label><br>
     <select id="inputJenjang" style="width:90%; margin-bottom:10px;">
   <option value=""></option>
-  <option value="A1">1 PDF</option>
-  <option value="A2">2 PDF</option>
-  <option value="A3">3 PDF</option>
-  <option value="A4">1 MA</option>
-  <option value="A5">2 MA</option>
-  <option value="A6">3 MA</option>
+  <option value="A1">Private</option>
   </select>
 
     <div style="margin-top:10px; display:flex; justify-content:space-between; gap:8px;">
@@ -2549,31 +2542,9 @@ background:rgba(0,0,0,0.5); z-index:999; justify-content:center; align-items:cen
 
   // === Fungsi atur dropdown kelas ===
 function aturDropdownKelas(user) {
-  const semuaKelas = [  "kelas_012526","kelas_022526","kelas_032526","kelas_042526","kelas_052526","kelas_062526",
-    "kelas_072526","kelas_082526","kelas_092526","kelas_102526","kelas_112526","kelas_122526",
-    "kelas_132526","kelas_142526","kelas_152526","kelas_162526","kelas_172526","kelas_182526",
-    "kelas_192526","kelas_202526"];
+  const semuaKelas = [  "kelas_012526"];
 
-  const namaKelasCustom = {  kelas_012526: "Ustadzah Lylika Tri Canda Medita",
-  kelas_022526: "Ustadzah Dewi Khumariah Rhasya",
-  kelas_032526: "Ustadzah Nadia Nurfadhilah",
-  kelas_042526: "Ustadzah Eliya",
-  kelas_052526: "Ustadzah Rima Karimah",
-  kelas_062526: "Ustadzah Rishana Hanifa",
-  kelas_072526: "Ustadzah Karimah",
-  kelas_082526: "Ustadzah Nurfadhilah Kamaliyah",
-  kelas_092526: "Ustadzah Umi Muthoharoh",
-  kelas_102526: "Ustadzah Sofi Agnia",
-  kelas_112526: "Ustadzah Ririn Nurlaily",
-  kelas_122526: "Ustadzah Zihan Audrian Hidayat",
-  kelas_132526: "Ustadzah Nopia",
-  kelas_142526: "Ustadz Imam Tolhah",
-  kelas_152526: "Ustadz Fahri Aziz",
-  kelas_162526: "Ustadz Saeful Munawar Rizal",
-  kelas_172526: "Ustadz Aflah Musoddaq",
-  kelas_182526: "Ustadz Saif Abdullah",
-  kelas_192526: "Ustadz Muhammad Farhan Hidayat",
-  kelas_202526: "Ustadz Farrid Ilallah"};
+  const namaKelasCustom = {  kelas_012526: "Ustadz M. Taqi Lazuardi"};
 
   kelasSelect.innerHTML = "";
 
@@ -2752,7 +2723,7 @@ logoutBtn.addEventListener("click", () => {
   // Konfigurasi global yang bisa dioverride sebelum loadSantriData jalan
   window.ABS_FLEX_CFG = window.ABS_FLEX_CFG || {
     statuses: ["hadir","izin","sakit","alpha"],
-    perStatus: Number(window.ABS_FLEX_PER_STATUS ?? 6), // default 2 unit per status (hadir1..2, dst)
+    perStatus: Number(window.ABS_FLEX_PER_STATUS ?? 1), // default 2 unit per status (hadir1..2, dst)
 	defaultTarget: 6,                                   // default denominator
     maxTarget: 6,                                       // denominator 1..6
     labels: null                                        // {hadir:[...], izin:[...], ...] (opsional)
@@ -2772,7 +2743,7 @@ logoutBtn.addEventListener("click", () => {
     const Title   = st.charAt(0).toUpperCase() + st.slice(1);
     const idx     = i - 1;
     const per     = ABS_FLEX_CFG.perStatus|0;
-    const sesiAll = ["Subuh","Pagi","Siang","Sore","Malam","Tahajjud"];
+    const sesiAll = ["Subuh"];
 
     // Legacy: jika tetap 2 sesi, pertahankan Pagi/Sore
     if (per === 2){
@@ -3117,7 +3088,7 @@ async function loadSantriData() {
   overlay.style.display = "flex";
 
   // ===== util jenjang (tetap) =====
-  const JENJANG_MAX = Number(window.JENJANG_MAX ?? 9);
+  const JENJANG_MAX = Number(window.JENJANG_MAX ?? 1);
 
   const parseJenjang = (v) => {
     const m = /^A(\d+)$/.exec(String(v || "").trim());
@@ -3553,23 +3524,13 @@ async function loadSantriData() {
           <td class="col-nama">${santri.nama ?? ""}${subTanggal}</td>
           <td>
             <select class="jenjang">
-              <option value="A1" ${jenNow === 'A1' ? 'selected' : ''}>1 PDF</option>
-              <option value="A2" ${jenNow === 'A2' ? 'selected' : ''}>2 PDF</option>
-              <option value="A3" ${jenNow === 'A3' ? 'selected' : ''}>3 PDF</option>
-              <option value="A4" ${jenNow === 'A4' ? 'selected' : ''}>1 MA</option>
-              <option value="A5" ${jenNow === 'A5' ? 'selected' : ''}>2 MA</option>
-              <option value="A6" ${jenNow === 'A6' ? 'selected' : ''}>3 MA</option>
-            </select>
+    <option value="A1" ${jenNow === 'A1' ? 'selected' : ''}>Private</option>
+  </select>
           </td>
           <td>
             <select class="semester">
-              <option value="1" ${String(semNow) === '1' ? 'selected' : ''}>1</option>
-              <option value="2" ${String(semNow) === '2' ? 'selected' : ''}>2</option>
-              <option value="3" ${String(semNow) === '3' ? 'selected' : ''}>3</option>
-              <option value="4" ${String(semNow) === '4' ? 'selected' : ''}>4</option>
-              <option value="5" ${String(semNow) === '5' ? 'selected' : ''}>5</option>
-              <option value="6" ${String(semNow) === '6' ? 'selected' : ''}>6</option>
-            </select>
+    <option value="A1" ${String(semNow) === 'A1' ? 'selected' : ''}>Private</option>
+  </select>
           </td>
 
           <!-- ABSENSI FLEX -->
@@ -3580,10 +3541,10 @@ async function loadSantriData() {
 
           <td>
             <select class="keterangan">
-              <option value="" ${!ketNow ? 'selected' : ''}></option>
-              <option value="SP1" ${ketNow === 'SP1' ? 'selected' : ''}>SP1</option>
-              <option value="SP2" ${ketNow === 'SP2' ? 'selected' : ''}>SP2</option>
-            </select>
+    <option value="" ${!ketNow ? 'selected' : ''}></option>
+    <option value="SP1" ${ketNow === 'SP1' ? 'selected' : ''}>SP1</option>
+    <option value="SP2" ${ketNow === 'SP2' ? 'selected' : ''}>SP2</option>
+  </select>
           </td>
           <td>
             <select class="surah-dari">${surahOptionsDari}</select>
@@ -4646,26 +4607,7 @@ document.getElementById('mur-save')?.addEventListener('click', function(){ simpa
   // === Helper Kelas/Kelompok ===
 function buildKelasKelompokLine(kelas, kelasEl) {
   const kelasNum = (String(kelas||'').match(/(\d+)/)?.[1]) || (kelas || '-');
-  const custom = window.namaKelasCustom || window.NAMA_KELAS_CUSTOM || {  kelas_012526: "Kelompok Ustadzah Lylika Tri Canda Medita",
-  kelas_022526: "Kelompok Ustadzah Dewi Khumariah Rhasya",
-  kelas_032526: "Kelompok Ustadzah Nadia Nurfadhilah",
-  kelas_042526: "Kelompok Ustadzah Eliya",
-  kelas_052526: "Kelompok Ustadzah Rima Karimah",
-  kelas_062526: "Kelompok Ustadzah Rishana Hanifa",
-  kelas_072526: "Kelompok Ustadzah Karimah",
-  kelas_082526: "Kelompok Ustadzah Nurfadhilah Kamaliyah",
-  kelas_092526: "Kelompok Ustadzah Umi Muthoharoh",
-  kelas_102526: "Kelompok Ustadzah Sofi Agnia",
-  kelas_112526: "Kelompok Ustadzah Ririn Nurlaily",
-  kelas_122526: "Kelompok Ustadzah Zihan Audrian Hidayat",
-  kelas_132526: "Kelompok Ustadzah Nopia",
-  kelas_142526: "Kelompok Ustadz Imam Tolhah",
-  kelas_152526: "Kelompok Ustadz Fahri Aziz",
-  kelas_162526: "Kelompok Ustadz Saeful Munawar Rizal",
-  kelas_172526: "Kelompok Ustadz Aflah Musoddaq",
-  kelas_182526: "Kelompok Ustadz Saif Abdullah",
-  kelas_192526: "Kelompok Ustadz Muhammad Farhan Hidayat",
-  kelas_202526: "Kelompok Ustadz Farrid Ilallah"};
+  const custom = window.namaKelasCustom || window.NAMA_KELAS_CUSTOM || {  kelas_012526: "Ustadz M. Taqi Lazuardi"};
     let kelompok = custom[kelas] || "";
     if (!kelompok) {
       const optText = kelasEl?.options?.[kelasEl.selectedIndex]?.text?.trim() || "";
@@ -5323,7 +5265,7 @@ window.PDF_joinSAsegmentsNamaMerged  = PDF_joinSAsegmentsNamaMerged;
       const rightX = margin.left + colW + colGap;
 
       doc.setFont('helvetica','normal'); doc.setFontSize(11);
-      doc.text(`Tengaran, ${ttdDate}`, margin.left + totalW, y, { align:'right' });
+      doc.text(`Medan, ${ttdDate}`, margin.left + totalW, y, { align:'right' });
 
       const headY = y + 8;
       doc.text('Mengetahui,', leftX, headY);
@@ -5759,7 +5701,7 @@ window.PDF_joinSAsegmentsNamaMerged  = PDF_joinSAsegmentsNamaMerged;
       const rightX = margin.left + colW + colGap;
 
       doc.setFont('helvetica','normal'); doc.setFontSize(11);
-      doc.text(`Tengaran, ${ttdDate}`, margin.left + totalW, y, { align:'right' });
+      doc.text(`Medan, ${ttdDate}`, margin.left + totalW, y, { align:'right' });
 
       const headY = y + 8;
       doc.text('Mengetahui,', leftX, headY);
@@ -6724,7 +6666,7 @@ async function pdfSantriDownload(){
     const rightX = margin.left + colW + colGap;
 
     doc.setFont('helvetica','normal'); doc.setFontSize(11);
-    doc.text(`Tengaran, ${ttdDate}`, margin.left + totalW, y, { align:'right' });
+    doc.text(`Medan, ${ttdDate}`, margin.left + totalW, y, { align:'right' });
 
     const headY = y + 8;
     doc.text('Mengetahui,', leftX, headY);
@@ -8581,7 +8523,7 @@ function juzOfAyah(s,a){
 
 <script>
   // ====== KONFIG (opsional dari window.*) ======
-  const JENJANG_MAX = Number(window.JENJANG_MAX ?? 9);             // 34 default; 0 = tanpa batas atas
+  const JENJANG_MAX = Number(window.JENJANG_MAX ?? 1);             // 34 default; 0 = tanpa batas atas
   const JENJANG_SAFETY_CAP = Number(window.JENJANG_SAFETY_CAP ?? 1000); // darurat bila tanpa batas
 
   // ====== Helper jenjang dinamis ======
