@@ -4714,7 +4714,7 @@ function _isMeaningfulKBM(rec){
   // === Helper Kelas/Kelompok ===
 function buildKelasKelompokLine(kelas, kelasEl) {
   const kelasNum = (String(kelas||'').match(/(\d+)/)?.[1]) || (kelas || '-');
-  const custom = window.namaKelasCustom || window.NAMA_KELAS_CUSTOM || {  kelas_012025: "Ust. Tukimin",
+  const custom = window.namaKelasCustom || window.NAMA_KELAS_CUSTOM || {  kelas_012526: "Ust. M. Taqi Lazuardi",
   kelas_022025: "Ust. Dicky Miswardi",
   kelas_032025: "Ust. Jundullah BA",
   kelas_042025: "Ust. Abdullah",
@@ -6248,7 +6248,7 @@ async function xlsRekapDownload(){
     return out.length ? out.join(', ') : '-';
   }
   function PDF_percentCapaian(totalJuzNum, semester){
-    const batasSemester = {1: 8, 2: 13, 3: 18, 4: 23, 5: 28, 6: 30};
+    const batasSemester = {1: 8, 2: 5, 3: 5, 4: 5, 5: 5, 6: 2};
     const total = Number(totalJuzNum);
     const sem   = Number(semester);
     if (!Number.isFinite(total)) return 0;
@@ -8426,7 +8426,7 @@ if (window.currentRowEl){
     else { s=s.replace(/,/g,""); }
     const n = parseFloat(s); return Number.isFinite(n)?n:0;
   };
-  const BATAS = {1: 8, 2: 13, 3: 18, 4: 23, 5: 28, 6: 30};
+  const BATAS = {1: 5, 2: 10, 3: 15, 4: 20, 5: 30};
   const LS_KEY = k => `murRange:${k}`;
 
   function getSantriTable(){
